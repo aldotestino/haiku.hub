@@ -3,6 +3,7 @@
 import ActionWithTooltip from '@/components/action-with-tooltip';
 import Navbar from '@/components/navbar';
 import { Button } from '@/components/ui/button';
+import { createHaiku } from '@/server/actions';
 import { Delete, Download, Save, Trash, Trash2 } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 
@@ -32,6 +33,10 @@ function Haiku({ haiku }: HaikuProps) {
     autoExpand();
   }, [content]);
 
+  const onSave = () => {
+    createHaiku({ title, content });
+  };
+
   const onDownload = () => {
     const blob = new Blob([`# ${title}\n${content}`], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -45,13 +50,13 @@ function Haiku({ haiku }: HaikuProps) {
     <div className="space-y-10">
       <Navbar>
         <div className='space-x-2'>
-          <ActionWithTooltip tooltip="Save Hauiku">
+          <ActionWithTooltip tooltip="Delete Hauiku">
             <Button disabled={!title || !content} variant="destructive">
               <Trash2 className="w-5 h-5" />
             </Button>
           </ActionWithTooltip>
           <ActionWithTooltip tooltip="Save Hauiku">
-            <Button disabled={!title || !content} variant="outline">
+            <Button disabled={!title || !content} onClick={onSave} variant="outline">
               <Save className="w-5 h-5" />
             </Button>
           </ActionWithTooltip>

@@ -6,10 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate": "drizzle-kit generate:pg",
+    "migrate": "npx tsx ./src/server/db/migrate.ts"
   },
   "dependencies": {
     "@kinde-oss/kinde-auth-nextjs": "^2.2.4",
+    "@next/env": "^14.2.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@vercel/postgres": "^0.8.0",

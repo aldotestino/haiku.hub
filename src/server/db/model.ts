@@ -1,12 +1,10 @@
-import { sql } from 'drizzle-orm';
-import { text, integer, sqliteTable } from 'drizzle-orm/sqlite-core';
-import { Content } from 'next/font/google';
-import { title } from 'process';
+import '@/lib/config';
+import { pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core';
 
-const haikus = sqliteTable('haikus', {
-  id: integer('id').primaryKey(),
+export const haiku = pgTable('haiku', {
+  id: serial('id').primaryKey(),
   title: text('title').notNull(),
-  Content: text('content').notNull(),
-  createdAt: integer('created_at').notNull(),
-  updatedAt: integer('updated_at').notNull(),
+  content: text('content').notNull(),
+  userId: text('user_id').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
 });

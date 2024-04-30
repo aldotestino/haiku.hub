@@ -1,9 +1,16 @@
 import Haiku from '@/components/haiku';
+import { getHaiku } from '@/server/queries';
 
-function HaikuPage({ params }: { params: { id: string } }) {
+async function HaikuPage({ params }: { params: { id: string } }) {
+
+  const haikuId = parseInt(params.id);
+  const haiku = await getHaiku(haikuId);
 
   return (
-    <Haiku />
+    <Haiku haiku={{
+      title: haiku[0].title,
+      content: haiku[0].content
+    }} />
   );
 }
 
