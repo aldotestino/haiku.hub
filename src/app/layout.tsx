@@ -18,8 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, 'min-h-screen w-full max-w-screen-md mx-auto p-4 md:p-10')}>
-        {children}
+      <body className={inter.className}>
+        <div className='w-full max-w-screen-md mx-auto p-4 md:p-10'>
+          {children}
+        </div>
       </body>
     </html>
   );
