@@ -16,7 +16,11 @@ export async function getUserHaikus() {
     redirect('/api/auth/login');
   }
 
-  return db.select().from(haiku).where(eq(haiku.userId, userId));
+  return db.select({
+    id: haiku.id,
+    title: haiku.title,
+    createdAt: haiku.createdAt
+  }).from(haiku).where(eq(haiku.userId, userId));
 }
 
 export async function getHaiku(id: number) {
@@ -28,5 +32,12 @@ export async function getHaiku(id: number) {
     redirect('/api/auth/login');
   }
 
-  return db.select().from(haiku).where(and(eq(haiku.id, id), eq(haiku.userId, userId)));
+  const haikus = await db.select({
+    id: haiku.id,
+    title: haiku.title,
+    content: haiku.content
+  }).from(haiku).where(and(eq(haiku.id, id), eq(haiku.userId, userId)));
+  if (haikus.length === 0)
+    redirect('/dashboard');
+  return haikus[0];
 }

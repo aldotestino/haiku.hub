@@ -7,10 +7,7 @@ async function HaikuPage({ params }: { params: { id: string } }) {
   const haiku = await getHaiku(haikuId);
 
   return (
-    <Haiku haiku={{
-      title: haiku[0].title,
-      content: haiku[0].content
-    }} />
+    <Haiku haiku={haiku} />
   );
 }
 
