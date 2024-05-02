@@ -1,6 +1,4 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { buttonVariants } from './ui/button';
-import { Link } from 'lucide-react';
 
 function ActionWithTooltip({ children, tooltip }: {
   children: React.ReactNode;

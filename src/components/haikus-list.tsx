@@ -1,7 +1,6 @@
 import { getUserHaikus } from '@/server/queries';
 import { Inbox } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
 
 async function HaikusList() {
 

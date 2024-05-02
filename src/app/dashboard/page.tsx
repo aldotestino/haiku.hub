@@ -6,7 +6,7 @@ import { buttonVariants } from '@/components/ui/button';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 import {  PenLine } from 'lucide-react';
 import Link from 'next/link';
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 
 async function Dashboard() {
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export function useDisclosure() {
   const [isOpen, setIsOpen] = useState(false);
