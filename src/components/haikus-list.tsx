@@ -1,10 +1,20 @@
 import { getUserHaikus } from '@/server/queries';
+import { Inbox } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
 
 async function HaikusList() {
 
   const haikus = await getUserHaikus();
+
+  if(haikus.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center text-muted-foreground">
+        <Inbox size={64} />
+        <h2 className="text-lg font-semibold">No haikus found</h2>
+      </div>
+    );
+  }
 
   return (
     <ul className='divide-y'>

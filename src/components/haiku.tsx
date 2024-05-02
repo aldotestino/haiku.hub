@@ -4,6 +4,7 @@ import ActionWithTooltip from '@/components/action-with-tooltip';
 import Navbar from '@/components/navbar';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { createHaiku, deleteHaiku, updateHaiku } from '@/server/actions';
+import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types';
 import { Download, Save, Trash2, Home } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
@@ -14,9 +15,11 @@ interface HaikuProps {
     title: string;
     content: string;
   }
+  isAuhenticated: boolean;
+  user: KindeUser | null;
 }
 
-function Haiku({ haiku }: HaikuProps) {
+function Haiku({ haiku, isAuhenticated, user }: HaikuProps) {
 
   const [title, setTitle] = useState(haiku?.title || '');
   const [content, setContent] = useState(haiku?.content || '');
@@ -68,7 +71,7 @@ function Haiku({ haiku }: HaikuProps) {
 
   return (
     <div className="space-y-10">
-      <Navbar>
+      <Navbar isAuthenticated={isAuhenticated} user={user}>
         <>
           <Link href="/dashboard" className={buttonVariants({ variant: 'outline' })}>
             <Home className="h-5 w-5" />
