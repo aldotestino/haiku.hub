@@ -69,7 +69,7 @@ function Haiku({ haiku }: HaikuProps) {
   return (
     <div className="space-y-10">
       <Navbar>
-        <div className='space-x-2'>
+        <>
           <Link href="/dashboard" className={buttonVariants({ variant: 'outline' })}>
             <Home className="h-5 w-5" />
           </Link>
@@ -89,7 +89,7 @@ function Haiku({ haiku }: HaikuProps) {
               <Trash2 className="w-5 h-5" />
             </Button>
           </ActionWithTooltip>
-        </div>
+        </>
       </Navbar>
       <main className="space-y-8">
         <input autoFocus defaultValue={haiku?.title} onChange={e => setTitle(e.target.value)} type="text" placeholder="Title" className="text-3xl font-semibold font-serif w-full outline-none" />
